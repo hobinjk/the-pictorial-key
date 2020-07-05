@@ -1,0 +1,54 @@
+body {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.pages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.page {
+  margin: 40px 0;
+}
+
+.name {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 8px;
+  filter: blur(7px);
+}
+
+.desc {
+  margin: 20px;
+  text-indent: 4em;
+  hyphens: auto;
+  max-width: 30rem;
+  margin: auto;
+  line-height: 1.4em;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 270px;
+  height: 480px;
+  margin: auto;
+}
+
+.card-picture {
+  height: 440px;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.new {
+  text-align: center;
+  padding: 3px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  width: 120px;
+  margin: 0 auto;
+  margin-top: 18px;
+}
