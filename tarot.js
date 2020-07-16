@@ -69,4 +69,7 @@ function draw() {
   return `${number} of ${suit}` + reversed();
 }
 
-document.querySelector('.name').textContent = draw();
+let name = draw();
+document.querySelectorAll('.name').forEach(elt => {
+  elt.textContent = name;
+});

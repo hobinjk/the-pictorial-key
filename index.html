@@ -2,8 +2,9 @@
 <html>
   <head>
     <title>The Pictorial Key</title>
-     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
+    <script src="vendor/simplex-noise.js"></script>
   </head>
   <body>
     <div class="pages">
@@ -16,7 +17,8 @@
       </div>
       <div class="page">
         <div class="card">
-          <div class="card-picture"></div>
+          <canvas class="card-picture"></canvas>
+          <div class="name"></div>
         </div>
       </div>
     </div>

@@ -79,6 +79,26 @@ function generatePassage() {
   return formatted;
 }
 
+function drawNoise(gfx) {
+  let id = gfx.getImageData(0, 0, gfx.width, gfx.height);
+  let gen = new SimplexNoise();
+
+  for (let y = 0; y < gfx.height; y++) {
+    for (let x = 0; x < gfx.width; x++) {
+      let noise = gen.noise2D(x / 500, y / 500);
+      // let val = Math.round((noise + 1) * 3) * 127 / 3;
+      let k = 7;
+      let val = Math.round((noise + 1) * k) * 127 / k;
+      id.data[4 * (y * gfx.width + x) + 0] = val;
+      id.data[4 * (y * gfx.width + x) + 1] = val;
+      id.data[4 * (y * gfx.width + x) + 2] = val;
+      id.data[4 * (y * gfx.width + x) + 3] = 255;
+    }
+  }
+
+  gfx.putImageData(id, 0, 0);
+}
+
 async function run() {
   let res = await fetch('./text/cards.json');
   const cardsData = await res.json();
@@ -92,6 +112,14 @@ async function run() {
 
   let desc = generatePassage();
   document.querySelector('.desc').textContent = desc;
+
+  let cardPicture = document.querySelector('.card-picture');
+  const rect = cardPicture.getBoundingClientRect();
+  let gfx = cardPicture.getContext('2d');
+  gfx.width = cardPicture.width = rect.width;
+  gfx.height = cardPicture.height = rect.height;
+
+  drawNoise(gfx);
 }
 
 run();
